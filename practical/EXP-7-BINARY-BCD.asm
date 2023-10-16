@@ -1,0 +1,21 @@
+(*WRITE A PROGRAM TO CONVERT BINARY TO BCD*)
+
+LDA 2500H
+      MVI B,00H
+      MOV C,B
+X:CPI 64H
+	  JC LOOP
+      SUI 64H
+      INR B
+      JMP X
+LOOP:CPI 0AH
+	  JC LOOP2
+      SUI 0AH
+      INR C
+      JMP LOOP
+LOOP2:STA 2503H
+	  MOV A,B 
+      STA 2501H
+      MOV A,C 
+      STA 2502H
+      HLT
